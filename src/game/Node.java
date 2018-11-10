@@ -40,6 +40,10 @@ public abstract class Node implements IGameObject {
 		currentItem = null;	
 	}
 	
+	public boolean isFull() {
+		return currentItem != null;
+	}
+	
 	protected abstract Edge selectOutgoingEdge();
 	
 	@Override
