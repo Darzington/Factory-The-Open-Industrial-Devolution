@@ -40,7 +40,10 @@ public abstract class Node implements IGameObject {
 		return currentItem != null;
 	}
 	
-	protected abstract Edge selectOutgoingEdge();
+	protected Edge selectOutgoingEdge() {
+		return outgoingEdges.get(0);
+	}
+
 	
 	public void addOutgoingEdge(Edge newEdge)
 	{

@@ -11,11 +11,7 @@ public class Input extends TimedNode {
 		this.itemQueue = itemQueue;
 	}
 
-	@Override
-	protected Edge selectOutgoingEdge() {
-		return outgoingEdges.get(0);
-	}
-	
+		
 	public void update(double delta) {
 		if(!itemQueue.isEmpty()) {
 			if(!isFull()) {
