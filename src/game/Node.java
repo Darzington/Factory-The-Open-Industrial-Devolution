@@ -20,7 +20,7 @@ public abstract class Node implements IGameObject {
 	
 	public boolean inputItem(Item item)
 	{
-		if (currentItem == null)
+		if (!isFull())
 		{
 			currentItem = item;
 			GameClock.addTimer(this, holdTime);
