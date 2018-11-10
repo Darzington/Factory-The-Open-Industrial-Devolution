@@ -2,7 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
-public class DirectionalDistributor extends Node {
+public class DirectionalDistributor extends TimedNode {
 
 	private int activeEdge;
 	

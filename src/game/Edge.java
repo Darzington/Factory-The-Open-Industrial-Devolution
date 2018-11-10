@@ -14,9 +14,9 @@ public class Edge implements IGameObject {
 	private Point2D start, end;
 	private double deltaX, deltaY;
 	private ArrayList<Item> currentItems;
-	private Node nextNode;	
+	private TimedNode nextNode;	
 	
-	public Edge(double speed, Point2D start, Point2D end,  Node nextNode) {
+	public Edge(double speed, Point2D start, Point2D end,  TimedNode nextNode) {
 		this.start = start;
 		this.end = end;
 		this.currentItems = new ArrayList<>();
