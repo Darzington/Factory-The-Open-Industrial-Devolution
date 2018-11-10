@@ -10,7 +10,7 @@ public abstract class Node implements IGameObject {
 	
 	private double holdTime;
 	private Item currentItem;
-	private ArrayList<Edge> outgoingEdges;
+	protected ArrayList<Edge> outgoingEdges;
 	
 	public Node(double holdTime)	
 	{
