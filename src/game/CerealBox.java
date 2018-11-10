@@ -10,16 +10,32 @@ public class CerealBox extends Item {
 		return hasCereal;
 	}
 
-	public void setHasCereal(boolean hasCereal) {
-		this.hasCereal = hasCereal;
+	public boolean addCereal() {
+		if (hasCereal)
+		{
+			return false;
+		}
+		else
+		{
+			hasCereal = true;
+			return true;
+		}
 	}
 
 	public boolean hasPrize() {
 		return hasPrize;
 	}
 
-	public void setHasPrize(boolean hasPrize) {
-		this.hasPrize = hasPrize;
+	public boolean addPrize() {
+		if (hasPrize)
+		{
+			return false;
+		}
+		else
+		{
+			hasPrize = true;
+			return true;
+		}
 	}
 	
 	public boolean isSameItem(CerealBox box2)
@@ -31,13 +47,11 @@ public class CerealBox extends Item {
 
 	@Override
 	public void update(double delta) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		// TODO Auto-generated method stub
 		
 	}
 }
