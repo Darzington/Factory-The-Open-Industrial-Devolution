@@ -2,7 +2,7 @@ package game;
 
 import java.util.Queue;
 
-public class Input extends Node {
+public class Input extends TimedNode {
 
 	private Queue<Item> itemQueue;
 	

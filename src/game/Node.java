@@ -4,17 +4,14 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import com.zalinius.architecture.IGameObject;
-import com.zalinius.utilities.time.GameClock;
 
 public abstract class Node implements IGameObject {
 	
-	private double holdTime;
-	private Item currentItem;
+	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
 	
-	public Node(double holdTime)	
+	public Node()	
 	{
-		this.holdTime = holdTime;
 		this.outgoingEdges = new ArrayList<>();
 	}
 	
@@ -23,7 +20,6 @@ public abstract class Node implements IGameObject {
 		if (!isFull())
 		{
 			currentItem = item;
-			GameClock.addTimer(this, holdTime);
 			return true;
 		}
 		else
@@ -33,7 +29,7 @@ public abstract class Node implements IGameObject {
 		}
 	}
 	
-	private void outputItem(Item item)
+	protected void outputItem(Item item)
 	{
 		Edge correctEdge = selectOutgoingEdge();
 		correctEdge.inputItem(item);
@@ -46,12 +42,14 @@ public abstract class Node implements IGameObject {
 	
 	protected abstract Edge selectOutgoingEdge();
 	
+	public void addOutgoingEdge(Edge newEdge)
+	{
+		outgoingEdges.add(newEdge);
+	}
+	
 	@Override
 	public void update(double delta) {
-		if (GameClock.isTimerDone(this))
-		{
-			outputItem(currentItem);
-		}
+
 	}
 
 	@Override
