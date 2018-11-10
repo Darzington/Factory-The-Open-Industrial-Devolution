@@ -6,7 +6,7 @@ public class CerealBox extends Item {
 
 	private boolean hasCereal, hasPrize;
 
-	public boolean isHasCereal() {
+	public boolean hasCereal() {
 		return hasCereal;
 	}
 
@@ -14,7 +14,7 @@ public class CerealBox extends Item {
 		this.hasCereal = hasCereal;
 	}
 
-	public boolean isHasPrize() {
+	public boolean hasPrize() {
 		return hasPrize;
 	}
 
