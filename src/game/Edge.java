@@ -62,6 +62,8 @@ public class Edge implements GameObject {
 
 	@Override
 	public void render(Graphics2D g) {	
-		
+		for (Item item : currentItems) {
+			item.render(g);
+		}
 	}
 }

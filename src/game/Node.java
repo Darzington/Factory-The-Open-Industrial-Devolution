@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import com.zalinius.architecture.GameObject;
@@ -57,8 +56,4 @@ public abstract class Node implements GameObject {
 
 	}
 
-	@Override
-	public void render(Graphics2D g) {	
-		
-	}
 }
