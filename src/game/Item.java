@@ -1,9 +1,9 @@
 package game;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
 
-public abstract class Item implements IGameObject {
+public abstract class Item implements GameObject {
 
 	private Point2D position;
 	

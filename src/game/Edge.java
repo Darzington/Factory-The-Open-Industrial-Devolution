@@ -3,12 +3,12 @@ package game;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
 import com.zalinius.physics.Vector2D;
 import com.zalinius.utilities.ZMath;
 
-public class Edge implements IGameObject {
+public class Edge implements GameObject {
 	
 	private double speed;
 	private Point2D start, end;
