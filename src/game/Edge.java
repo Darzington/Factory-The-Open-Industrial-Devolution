@@ -3,16 +3,16 @@ package game;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
 import com.zalinius.physics.Vector2D;
 import com.zalinius.utilities.ZMath;
 
-public class Edge implements IGameObject {
+public class Edge implements GameObject {
 	
-	private double length, speed;
+	private double speed;
 	private Point2D start, end;
-	private double deltaX, deltaY;
+	private Vector2D change;
 	private ArrayList<Item> currentItems;
 	private Node nextNode;	
 	
@@ -23,7 +23,6 @@ public class Edge implements IGameObject {
 		this.nextNode = nextNode;
 		
 		setSpeed(speed);
-		this.length = Point2D.distance(start, end);	
 	}
 
 	public void inputItem(Item item)
@@ -40,17 +39,17 @@ public class Edge implements IGameObject {
 	private void setSpeed(double newSpeed)
 	{
 		this.speed = newSpeed;
-		Vector2D deltaPos = new Vector2D(start, end);
-		deltaPos.scale(speed);
-		deltaX = deltaPos.x;
-		deltaY = deltaPos.y;
+		change = new Vector2D(start, end)
+					 .originVector()
+					 .scale(speed);
+
 	}
 	
 	@Override
 	public void update(double delta) {
 		for (Item item : currentItems) {
 			Point2D newPos = item.getPosition();
-			newPos.add(deltaX, deltaY);
+			newPos = Point2D.add(newPos, change);
 			newPos = ZMath.clamp(newPos, start, end);
 			item.move(newPos);
 			

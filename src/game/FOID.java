@@ -3,10 +3,10 @@ package game;
 import java.awt.Graphics2D;
 
 import com.zalinius.architecture.GameContainer;
-import com.zalinius.architecture.IGraphical;
-import com.zalinius.architecture.ILogical;
+import com.zalinius.architecture.Graphical;
+import com.zalinius.architecture.Logical;
 
-public class FOID implements IGraphical, ILogical{
+public class FOID implements Graphical, Logical{
 	
 	private Test t1;
 

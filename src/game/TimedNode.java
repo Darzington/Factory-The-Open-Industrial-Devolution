@@ -1,12 +1,9 @@
 package game;
 
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-
-import com.zalinius.architecture.IGameObject;
 import com.zalinius.utilities.time.GameClock;
 
-public abstract class TimedNode extends Node implements IGameObject {
+public abstract class TimedNode extends Node {
 	
 	private double holdTime;
 	

@@ -3,9 +3,9 @@ package game;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 
-public abstract class Node implements IGameObject {
+public abstract class Node implements GameObject {
 	
 	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
