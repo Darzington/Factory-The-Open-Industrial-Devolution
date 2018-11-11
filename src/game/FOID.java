@@ -8,14 +8,15 @@ import com.zalinius.architecture.Logical;
 
 import levels.Level;
 import levels.Level0;
+import levels.Level1;
 
 public class FOID implements Graphical, Logical{
 	
 	private Test t1;
-	private Level level0;
+	private Level level;
 
 	public FOID() {
-		level0 = new Level0();
+		level = new Level1();
 	}
 
 	public static void main(String[] args) {
@@ -30,13 +31,13 @@ public class FOID implements Graphical, Logical{
 	@Override
 	public void update(double delta) {
 		t1.update(delta);
-		level0.update(delta);
+		level.update(delta);
 	}
 
 	@Override
 	public void render(Graphics2D g) {	
 		t1.render(g);
-		level0.render(g);
+		level.render(g);
 	}
 
 }
