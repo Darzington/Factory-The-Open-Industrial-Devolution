@@ -45,4 +45,9 @@ public class Garbage extends Item{
 	public int getHeight() {
 		return height;
 	}
+
+	@Override
+	public int getWidth() {
+		return height;
+	}
 }

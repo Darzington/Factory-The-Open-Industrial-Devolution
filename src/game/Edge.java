@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import com.zalinius.architecture.GameObject;
@@ -85,5 +86,9 @@ public class Edge implements GameObject {
 	
 	public Node getNextNode() {
 		return nextNode;
+	}
+	
+	public Collection<Item> getContents(){
+		return currentItems;
 	}
 }

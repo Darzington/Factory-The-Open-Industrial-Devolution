@@ -38,4 +38,5 @@ public abstract class Item implements GameObject {
 	public abstract Color getColor();
 	
 	public abstract int getHeight();
+	public abstract int getWidth();
 }
