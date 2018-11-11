@@ -6,14 +6,22 @@ import java.util.ArrayList;
 import com.zalinius.architecture.GameObject;
 import com.zalinius.utilities.Debug;
 
-public abstract class Node implements GameObject {
+public class Node implements GameObject {
 	
+	public final static int NODE_SIZE = 50;
+
 	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
 	
 	public Node()	
 	{
 		this.outgoingEdges = new ArrayList<>();
+	}
+	
+	public Node(Edge outgoingEdge)	
+	{
+		this.outgoingEdges = new ArrayList<>();
+		outgoingEdges.add(outgoingEdge);
 	}
 	
 	public boolean inputItem(Item item)
@@ -46,7 +54,10 @@ public abstract class Node implements GameObject {
 		return currentItem != null;
 	}
 	
-	protected abstract Edge selectOutgoingEdge();
+	protected Edge selectOutgoingEdge()
+	{
+		return outgoingEdges.get(0);
+	}
 	
 	public void addOutgoingEdge(Edge newEdge)
 	{
