@@ -48,11 +48,15 @@ public class CerealBox extends Item {
 		}
 	}
 	
-	public boolean isSameItem(CerealBox box2)
+	public boolean isSameItem(Item box2)
 	{
-		return super.isSameItem(box2) 
-				&& hasCereal == box2.hasCereal 
-				&& hasPrize == box2.hasPrize;
+		if(super.isSameItem(box2))
+		{
+			CerealBox other = (CerealBox) box2;
+			return hasCereal == other.hasCereal() 
+				&& hasPrize == other.hasPrize();
+		}	
+		return false;
 	}
 
 	@Override
