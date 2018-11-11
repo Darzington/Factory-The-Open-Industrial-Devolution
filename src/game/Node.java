@@ -58,6 +58,7 @@ public class Node implements GameObject {
 	{
 		return outgoingEdges.get(0);
 	}
+
 	
 	public void addOutgoingEdge(Edge newEdge)
 	{
