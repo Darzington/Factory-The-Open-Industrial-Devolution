@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.zalinius.architecture.GameObject;
+import com.zalinius.utilities.Debug;
 
 public abstract class AssemblyLine implements GameObject {
 
@@ -22,6 +23,12 @@ public abstract class AssemblyLine implements GameObject {
 	
 	private void findEdgesAndNodes(Node node) {
 		nodes.add(node);
+//		if(node.getClass() == StorageNode.class) {
+//			Debug.log("In storage");
+//			node = ((StorageNode)node).getBase();
+//			nodes.add(node);
+//		}
+
 		edges.addAll(node.outgoingEdges);
 		
 		node.outgoingEdges.forEach(child -> findEdgesAndNodes(child.getNextNode()));
