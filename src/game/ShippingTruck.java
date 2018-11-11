@@ -6,6 +6,10 @@ public class ShippingTruck extends Node {
 
 	private ArrayList<Item> packedItems;
 	
+	public ShippingTruck() {
+		packedItems = new ArrayList<>();
+	}
+	
 	@Override
 	public boolean inputItem(Item item)
 	{
