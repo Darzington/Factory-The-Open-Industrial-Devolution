@@ -99,15 +99,11 @@ public class Node implements GameObject {
 	
 	@Override
 	public void update(double delta) {
-		for (Edge edge : outgoingEdges) {
-			edge.update(delta);
-		}
+
 	}
 	
 	@Override
 	public void render(Graphics2D g) {	
-		for (Edge e : outgoingEdges) {
-			e.render(g);
-		}
+
 	}
 }

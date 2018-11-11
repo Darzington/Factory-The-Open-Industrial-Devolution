@@ -7,7 +7,9 @@ import java.util.Iterator;
 import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
 import com.zalinius.physics.Vector2D;
+import com.zalinius.utilities.Debug;
 import com.zalinius.utilities.ZMath;
+import com.zalinius.utilities.time.GameClock;
 
 public class Edge implements GameObject {
 	
@@ -54,7 +56,7 @@ public class Edge implements GameObject {
 			Item item = it.next();
 			
 			Point2D newPos = item.getPosition();
-			newPos = Point2D.add(newPos, change);
+			newPos = Point2D.add(newPos, change.scale(delta));
 
 			newPos = ZMath.clamp(newPos, start, end);
 			item.move(newPos);
@@ -77,5 +79,9 @@ public class Edge implements GameObject {
 		for (Item item : currentItems) {
 			item.render(g);
 		}
+	}
+	
+	public Node getNextNode() {
+		return nextNode;
 	}
 }

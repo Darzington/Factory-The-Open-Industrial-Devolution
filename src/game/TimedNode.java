@@ -1,6 +1,8 @@
 package game;
 
 import java.awt.Graphics2D;
+
+import com.zalinius.utilities.Debug;
 import com.zalinius.utilities.time.GameClock;
 
 public abstract class TimedNode extends Node {
@@ -29,10 +31,9 @@ public abstract class TimedNode extends Node {
 			
 	@Override
 	public void update(double delta) {
-		super.update(delta);
 		if (isFull() && GameClock.isTimerDone(this))
 		{
-			outputItem(currentItem);
+			outputItem();
 		}
 	}
 

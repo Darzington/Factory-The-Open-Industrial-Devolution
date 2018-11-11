@@ -10,6 +10,7 @@ import java.awt.*;
 
 import game.AssemblyLine;
 import game.Conveyor;
+import game.Edge;
 import game.Input;
 import game.Item;
 
@@ -44,9 +45,9 @@ public class Line0 extends AssemblyLine{
 	}
 	
 	private static Input fullLine() {
-		Input start = new Input(items(), 0.3);		
-		
-		start.addOutgoingEdge(new Conveyor(new Point2D(50, 550), new Point2D(570, 550)));;
+		Input start = new Input(items(), 1);		
+		Edge convey = new Conveyor(new Point2D(50, 550), new Point2D(570, 550));
+		start.addOutgoingEdge(convey);
 		
 		return start;
 	}
