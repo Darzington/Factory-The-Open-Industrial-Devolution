@@ -12,7 +12,7 @@ import com.zalinius.utilities.ZMath;
 public class Edge implements GameObject {
 	
 	private double speed;
-	private Point2D start, end;
+	protected Point2D start, end;
 	private Vector2D change;
 	private ArrayList<Item> currentItems;
 	private Node nextNode;	
@@ -41,8 +41,8 @@ public class Edge implements GameObject {
 	{
 		this.speed = newSpeed;
 		change = new Vector2D(start, end)
-					 .originVector()
-					 .scale(speed/change.length());
+					 .originVector();
+		change = change.scale(speed/change.length());
 	}
 	
 	@Override

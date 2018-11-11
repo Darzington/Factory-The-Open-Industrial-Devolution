@@ -2,9 +2,9 @@ package game;
 
 import java.awt.Graphics2D;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 
-public abstract class AssemblyLine implements IGameObject {
+public abstract class AssemblyLine implements GameObject {
 
 	private Input input;
 	

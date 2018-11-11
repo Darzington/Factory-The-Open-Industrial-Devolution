@@ -2,11 +2,11 @@ package levels;
 
 import java.awt.Graphics2D;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 
 import game.AssemblyLine;
 
-public abstract class Level implements IGameObject{
+public abstract class Level implements GameObject{
 
 	private AssemblyLine line;
 	

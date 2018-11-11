@@ -18,7 +18,7 @@ public abstract class Item implements GameObject {
 	
 	public Point2D getPosition()
 	{
-		return new Point2D(position.x(), position.y());
+		return new Point2D(position.x, position.y);
 	}
 	
 	public boolean isSameItem(Item item2)

@@ -35,7 +35,7 @@ public class Line0 extends AssemblyLine{
 				@Override
 				public void render(Graphics2D g) {
 					g.setColor(Color.BLUE);
-					g.drawRect((int)getPosition().x(), (int)getPosition().y() - 12, 10, 10);
+					g.drawRect((int)getPosition().x, (int)getPosition().y - 12, 10, 10);
 				}
 			});
 		}
