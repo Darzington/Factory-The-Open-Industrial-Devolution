@@ -10,7 +10,7 @@ import com.zalinius.utilities.Debug;
 
 public class Node implements GameObject {
 	
-	public final static int NODE_SIZE = 50;
+	public final static int NODE_SIZE = 50, HALF_NODE_SIZE = (int)(NODE_SIZE/2.0);
 
 	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
@@ -99,12 +99,12 @@ public class Node implements GameObject {
 	
 	public Rectangle getClickArea()
 	{
-		return new Rectangle((int)(center.x - NODE_SIZE/2.0) , (int)(center.y - NODE_SIZE/2.0), NODE_SIZE, NODE_SIZE);
+		return new Rectangle((int)(center.x - HALF_NODE_SIZE) , (int)(center.y - HALF_NODE_SIZE), NODE_SIZE, NODE_SIZE);
 	}
 	
 	public void drawRectangle(Graphics2D g)
 	{
-		g.draw(getClickArea());
+		g.fill(getClickArea());
 	}
 	
 	@Override

@@ -46,7 +46,7 @@ public class ShippingTruck extends Node {
 	@Override
 	public void render(Graphics2D g) {
 		g.setColor(Color.CYAN);
-		g.draw(getClickArea());
+		g.fill(getClickArea());
 	}
 
 }

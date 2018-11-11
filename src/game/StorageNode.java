@@ -2,11 +2,12 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.event.MouseEvent;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import com.zalinius.architecture.GameStage;
 import com.zalinius.architecture.input.Clickable;
 import com.zalinius.physics.Point2D;
 
@@ -15,10 +16,12 @@ public class StorageNode extends Node {
 	Item storageItemType;
 	Queue<Item> storage;
 
-	public StorageNode(MachineBaseNode base, Point2D center)
+	public StorageNode(MachineBaseNode base, Point2D center, Item storageItemType)
 	{
 		super(new Edge(center, base.getCenter(), base), center);
 		storage = new ArrayDeque<>();
+		this.storageItemType = storageItemType;
+		GameStage.addInput(getControls());
 	}
 	
 	@Override
@@ -68,8 +71,7 @@ public class StorageNode extends Node {
 			
 			@Override
 			public int mouseButtonCode() {
-				// TODO Auto-generated method stub
-				return 0;
+				return MouseEvent.BUTTON1;
 			}
 			
 			@Override

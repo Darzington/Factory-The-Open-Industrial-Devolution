@@ -7,6 +7,10 @@ public abstract class Item implements GameObject {
 
 	private Point2D position;
 	
+	public Item() {
+		this.position = new Point2D(0,0);
+	}
+	
 	public Item(Point2D position) {
 		this.position = position;
 	}

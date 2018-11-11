@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import com.zalinius.physics.Point2D;
@@ -7,10 +8,7 @@ import com.zalinius.physics.Point2D;
 public class CerealBox extends Item {
 
 	private boolean hasCereal, hasPrize;
-	
-	public CerealBox(Point2D position) {
-		super(position);
-	}
+	final static int BOX_HEIGHT = 18;
 
 	public boolean hasCereal() {
 		return hasCereal;
@@ -58,7 +56,8 @@ public class CerealBox extends Item {
 
 	@Override
 	public void render(Graphics2D g) {
-		
+		g.setColor(Color.ORANGE);
+		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
 	}
 
 	@Override
