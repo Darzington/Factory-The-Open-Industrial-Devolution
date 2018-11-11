@@ -19,8 +19,8 @@ public class ShippingTruck extends Node {
 	@Override
 	public boolean inputItem(Item item)
 	{
-			packedItems.add(item);
-			return true;
+		packedItems.add(item);
+		return true;
 	}
 	
 	public ArrayList<Item> getPackedItem()
