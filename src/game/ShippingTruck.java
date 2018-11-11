@@ -10,25 +10,17 @@ import com.zalinius.utilities.Debug;
 public class ShippingTruck extends Node {
 
 	private ArrayList<Item> packedItems;
-	private int capacity;
 	
 	public ShippingTruck(Point2D center) {
 		super(null, center);
 		packedItems = new ArrayList<>();
-		capacity = 10;
 	}
 	
 	@Override
 	public boolean inputItem(Item item)
 	{
-		if(packedItems.size() < capacity) {
 			packedItems.add(item);
 			return true;
-		}
-		else {
-			validateContents();
-			return false;
-		}
 	}
 	
 	public ArrayList<Item> getPackedItem()
