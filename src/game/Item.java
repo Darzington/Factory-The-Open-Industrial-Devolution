@@ -16,4 +16,9 @@ public abstract class Item implements IGameObject {
 	{
 		return position;
 	}
+	
+	public boolean isSameItem(Item item2)
+	{
+		return this.getClass() == item2.getClass();		
+	}
 }

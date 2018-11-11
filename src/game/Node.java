@@ -29,11 +29,16 @@ public abstract class Node implements IGameObject {
 		}
 	}
 	
+	protected void outputItem()
+	{
+		outputItem(currentItem);
+		currentItem = null;	
+	}
+	
 	protected void outputItem(Item item)
 	{
 		Edge correctEdge = selectOutgoingEdge();
 		correctEdge.inputItem(item);
-		currentItem = null;	
 	}
 	
 	public boolean isFull() {
