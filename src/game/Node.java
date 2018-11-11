@@ -24,6 +24,13 @@ public class Node implements GameObject {
 		center = new Point2D(0,0);
 	}
 	
+	public Node(Point2D center)	
+	{
+		this.outgoingEdges = new ArrayList<>();
+		isOn = true;
+		this.center = center;
+	}
+	
 	public Node(Edge outgoingEdge, Point2D center)	
 	{
 		this();
