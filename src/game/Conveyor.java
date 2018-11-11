@@ -1,13 +1,14 @@
 package game;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import com.zalinius.physics.Point2D;
 
 public class Conveyor extends Edge {
 
 	public Conveyor(Point2D start, Point2D end) {
-		super(start, end, new ShippingTruck(end));
+		super(start, end, new DirectionalDistributor(end, new ArrayList<>()));
 	}
 
 	
