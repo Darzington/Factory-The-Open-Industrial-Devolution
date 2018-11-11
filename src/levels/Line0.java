@@ -15,6 +15,7 @@ import game.Edge;
 import game.Input;
 import game.Item;
 import game.MachineBaseNode;
+import game.Prize;
 import game.ShippingTruck;
 import game.StorageNode;
 
@@ -34,7 +35,14 @@ public class Line0 extends AssemblyLine{
 		Queue<Item> queue = new ArrayDeque<>();
 		
 		for(int i = 0; i != N; ++i) {
-			queue.add(new CerealBox());
+			if (Math.random() < 0.5)
+			{
+				queue.add(new CerealBox());
+			}
+			else
+			{
+				queue.add(new Prize());
+			}
 		}
 		
 		return queue;

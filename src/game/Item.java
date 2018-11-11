@@ -1,11 +1,14 @@
 package game;
 
+import java.awt.Color;
+
 import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
 
 public abstract class Item implements GameObject {
 
 	private Point2D position;
+	protected Color color;
 	
 	public Item() {
 		this.position = new Point2D(0,0);
@@ -31,4 +34,8 @@ public abstract class Item implements GameObject {
 	}
 	
 	public abstract boolean isComplete();
+	
+	public abstract Color getColor();
+	
+	public abstract int getHeight();
 }

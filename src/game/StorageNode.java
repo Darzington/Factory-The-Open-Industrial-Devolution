@@ -35,7 +35,7 @@ public class StorageNode extends Node {
 		else
 		{
 			storage.clear();
-			//outputItem(new Garbage());
+			outputItem(new Garbage(storageItemType.getHeight(), storageItemType.getColor()));
 			return false;
 		}
 	}

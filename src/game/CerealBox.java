@@ -3,13 +3,17 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import com.zalinius.physics.Point2D;
-
 public class CerealBox extends Item {
 
 	private boolean hasCereal, hasPrize;
-	final static int BOX_HEIGHT = 18;
+	public final static int BOX_HEIGHT = 18;
 
+	public CerealBox()
+	{
+		super();
+		color = Color.ORANGE;
+	}
+	
 	public boolean hasCereal() {
 		return hasCereal;
 	}
@@ -56,13 +60,23 @@ public class CerealBox extends Item {
 
 	@Override
 	public void render(Graphics2D g) {
-		g.setColor(Color.ORANGE);
+		g.setColor(color);
 		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
 	}
 
 	@Override
 	public boolean isComplete() {
 		return hasCereal && hasPrize;
+	}
+	
+	@Override
+	public Color getColor() {
+		return color;
+	}
+
+	@Override
+	public int getHeight() {
+		return BOX_HEIGHT;
 	}
 	
 }
