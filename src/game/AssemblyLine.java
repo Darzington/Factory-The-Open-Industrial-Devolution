@@ -22,14 +22,15 @@ public abstract class AssemblyLine implements GameObject {
 	}
 	
 	private void findEdgesAndNodes(Node node) {
+		if(!nodes.contains(node)) {
 		nodes.add(node);
-//		if(node.getClass() == StorageNode.class) {
-//			Debug.log("In storage");
-//			node = ((StorageNode)node).getBase();
-//			nodes.add(node);
-//		}
-
-		edges.addAll(node.outgoingEdges);
+		}
+		
+		for (Edge edge : node.outgoingEdges) {
+			if(!nodes.contains(edge)) {
+				edges.add(edge);
+			}
+		}
 		
 		node.outgoingEdges.forEach(child -> findEdgesAndNodes(child.getNextNode()));
 	}
@@ -45,8 +46,8 @@ public abstract class AssemblyLine implements GameObject {
 	
 	@Override
 	public void render(Graphics2D g) {
-		edges.forEach(edge -> edge.render(g));
 		nodes.forEach(node -> node.render(g));
+		edges.forEach(edge -> edge.render(g));
 	}
 
 }

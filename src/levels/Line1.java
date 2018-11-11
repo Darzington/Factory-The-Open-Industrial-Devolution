@@ -41,12 +41,13 @@ public class Line1 extends AssemblyLine {
 	private static Input fullLine() {
 		ShippingTruck truck = new ShippingTruck(END);
 		Edge truckConveyor = new Conveyor(CEREAL_FILLER_BOT, END, truck);
-		Node CerealFiller = new Node(truckConveyor, CEREAL_FILLER_BOT);
-		Edge c1 = new Conveyor(PRIZE_FILLER_BOT, CEREAL_FILLER_BOT, CerealFiller);
-		MachineBaseNode PrizeFiller = new MachineBaseNode(true, c1, PRIZE_FILLER_BOT);
-		Edge c2 = new Conveyor(BOX_DROPPER_BOT, PRIZE_FILLER_BOT, PrizeFiller);
+		FillerMachine cerealFiller = new FillerMachine(truckConveyor, 1, CEREAL_FILLER_BOT, CerealBox.cerealFiller());
+		Edge c1 = new Conveyor(PRIZE_FILLER_BOT, CEREAL_FILLER_BOT, cerealFiller);
+		FillerMachine prizeFiller = new FillerMachine(c1, 1, PRIZE_FILLER_BOT, CerealBox.prizeFiller());
+		Edge c2 = new Conveyor(BOX_DROPPER_BOT, PRIZE_FILLER_BOT, prizeFiller);
 		
-		MachineBaseNode boxBase = new MachineBaseNode(false, c2, BOX_DROPPER_BOT);
+		
+		MachineBaseNode boxBase = new MachineBaseNode(false, c2, 0, BOX_DROPPER_BOT);
 		Node boxStorage = new StorageNode(boxBase, BOX_DROPPER_TOP, new CerealBox());
 		Edge c3 = new Conveyor(BOX_DROPPER_HOPPER, BOX_DROPPER_TOP, boxStorage);
 		Node upRightCorner = new Node(c3, BOX_DROPPER_HOPPER);
@@ -54,22 +55,17 @@ public class Line1 extends AssemblyLine {
 		
 		Edge c4 = new Conveyor(PRIZE_FILLER_HOPPER, BOX_DROPPER_HOPPER, upRightCorner);
 		
-		Node prizeStorage = new StorageNode(PrizeFiller, PRIZE_FILLER_TOP, new Prize());
+		StorageNode prizeStorage = new StorageNode(prizeFiller, PRIZE_FILLER_TOP, new Prize());
+		//prizeFiller.connectToStorageNode(prizeStorage);
+
 		Edge c5 = new Conveyor(PRIZE_FILLER_HOPPER, PRIZE_FILLER_TOP, prizeStorage);
 
 		ArrayList<Edge> prizeDistEdges = new ArrayList<>();
 		prizeDistEdges.add(c4);	
 		prizeDistEdges.add(c5);
 		Node prizeDistributor = new DirectionalDistributor(PRIZE_FILLER_HOPPER, prizeDistEdges);
+		prizeDistributor.togglePoweredStatus();
 		
-		
-
-		
-		/*
-		MachineBaseNode storageBase = new MachineBaseNode(false, truckConveyor, STORAGE_NODE_BOTTOM);
-		StorageNode storageNode = new StorageNode(storageBase, STORAGE_NODE_TOP, new CerealBox());
-		storageBase.setConnectedMachine(storageNode);
-		*/
 		Edge startConveyor = new Conveyor(START, PRIZE_FILLER_HOPPER, prizeDistributor);		
 		Input start = new Input(items(), ITEM_FREQUENCY, START);		
 		start.addOutgoingEdge(startConveyor);

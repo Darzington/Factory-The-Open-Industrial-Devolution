@@ -40,7 +40,7 @@ public class DirectionalDistributor extends Node {
 	@Override
 	public void render(Graphics2D g) {
 		g.setColor(Color.RED);
-		drawRectangle(g);
+		g.draw(getClickArea());
 		
 		g.setColor(highlight);
 		if(activeEdge == 0) {
