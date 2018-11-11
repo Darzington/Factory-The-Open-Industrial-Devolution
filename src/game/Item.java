@@ -25,4 +25,6 @@ public abstract class Item implements GameObject {
 	{
 		return this.getClass() == item2.getClass();		
 	}
+	
+	public abstract boolean isComplete();
 }

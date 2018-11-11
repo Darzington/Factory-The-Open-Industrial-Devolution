@@ -60,4 +60,10 @@ public class CerealBox extends Item {
 	public void render(Graphics2D g) {
 		
 	}
+
+	@Override
+	public boolean isComplete() {
+		return hasCereal && hasPrize;
+	}
+	
 }
