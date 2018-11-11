@@ -10,7 +10,7 @@ public class FillerMachine extends MachineBaseNode {
 	
 	private FillerFunction fillerFunction;
 	private StorageNode storage;
-	private Item droppedItem;
+	private boolean itemRuined = false;
 
 	public FillerMachine(Edge outgoingEdge, double holdTime, Point2D center, FillerFunction fillerFunction) {
 		super(true, outgoingEdge, holdTime, center);
@@ -25,35 +25,34 @@ public class FillerMachine extends MachineBaseNode {
 	
 	@Override
 	public boolean inputItem(Item item)
-	{
-		if(isOn && storage != null && storage.isFull())
+	{		
+		if(super.inputItem(item) && storage != null && storage.isFull())
 		{
-			droppedItem = storage.storage.peek();
 			storage.outputItem();
 		}
-		return true;
-	}
-	
-	@Override
-	protected void outputItem(Item item)
-	{
-		droppedItem = null;
-
+		
 		if(isOn && (storage == null || storage.isFull()))
 		{
-			if (fillerFunction.fill(item))
+			if (!fillerFunction.fill(item))
 			{
-				super.outputItem(item);
+				currentItem = new Garbage(item.getHeight(), item.getColor());
 			}
-			else
-			{
-				super.outputItem(new Garbage(item.getHeight(), item.getColor()));
-			}
+		}	
+
+		return true;
+	}
+		
+	@Override
+	public void feedInItem(Item item)
+	{
+		if(currentItem == null)
+		{
+			super.outputItem(item);
 		}
 		else
 		{
-			super.outputItem(item);
-		}		
+			item = null;	//item is added to the product or turned to garbage
+		}
 	}
 	
 	@Override

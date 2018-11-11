@@ -18,9 +18,9 @@ public class StorageNode extends Node {
 	Queue<Item> storage;
 	private Node base;
 
-	public StorageNode(MachineBaseNode base, Point2D center, Item storageItemType)
+	public StorageNode(MachineBaseNode base, Edge edgeToBase, Point2D center, Item storageItemType)
 	{
-		super(new Edge(center, base.getCenter(), base), center);
+		super(edgeToBase, center);
 		storage = new ArrayDeque<>();
 		this.storageItemType = storageItemType;
 		GameStage.addInput(getControls());

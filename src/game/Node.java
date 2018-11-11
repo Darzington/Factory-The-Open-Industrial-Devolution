@@ -54,6 +54,11 @@ public class Node implements GameObject {
 		}
 	}
 	
+	public void feedInItem(Item item)
+	{
+		inputItem(item);
+	}
+	
 	protected void outputItem()
 	{
 		outputItem(currentItem);
