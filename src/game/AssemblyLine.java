@@ -3,6 +3,8 @@ package game;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.zalinius.architecture.GameObject;
 import com.zalinius.utilities.Debug;
@@ -10,27 +12,21 @@ import com.zalinius.utilities.Debug;
 public abstract class AssemblyLine implements GameObject {
 
 	private Input input;
-	private Collection<Node> nodes;
-	private Collection<Edge> edges;
+	private Set<Node> nodes;
+	private Set<Edge> edges;
 	
 	public AssemblyLine(Input input) {
 		this.input = input;
-		this.nodes = new ArrayList<>();
-		this.edges = new ArrayList<>();
+		this.nodes = new HashSet<>();
+		this.edges = new HashSet<>();
 		
 		findEdgesAndNodes(input);
 	}
 	
 	private void findEdgesAndNodes(Node node) {
-		if(!nodes.contains(node)) {
 		nodes.add(node);
-		}
-		
-		for (Edge edge : node.outgoingEdges) {
-			if(!nodes.contains(edge)) {
-				edges.add(edge);
-			}
-		}
+
+		edges.addAll(node.outgoingEdges);
 		
 		node.outgoingEdges.forEach(child -> findEdgesAndNodes(child.getNextNode()));
 	}
