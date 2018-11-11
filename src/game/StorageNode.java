@@ -16,6 +16,7 @@ public class StorageNode extends Node {
 	
 	Item storageItemType;
 	Queue<Item> storage;
+	private Node base;
 
 	public StorageNode(MachineBaseNode base, Point2D center, Item storageItemType)
 	{
@@ -23,6 +24,11 @@ public class StorageNode extends Node {
 		storage = new ArrayDeque<>();
 		this.storageItemType = storageItemType;
 		GameStage.addInput(getControls());
+		this.base = base;
+	}
+	
+	public Node getBase() {
+		return base;
 	}
 	
 	@Override

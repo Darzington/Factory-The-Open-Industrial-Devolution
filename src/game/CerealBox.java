@@ -85,7 +85,7 @@ public class CerealBox extends Item {
 		return BOX_HEIGHT;
 	}
 	
-	public FillerFunction cerealFiller()
+	public static FillerFunction cerealFiller()
 	{
 		return new FillerFunction() {
 			
@@ -105,7 +105,7 @@ public class CerealBox extends Item {
 		};
 	}
 	
-	public FillerFunction prizeFiller()
+	public static FillerFunction prizeFiller()
 	{
 		return new FillerFunction() {
 			

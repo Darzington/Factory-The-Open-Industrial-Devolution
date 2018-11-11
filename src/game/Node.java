@@ -1,7 +1,6 @@
 package game;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.ArrayList;
 
 import com.zalinius.architecture.GameObject;
@@ -114,6 +113,7 @@ public class Node implements GameObject {
 	
 	@Override
 	public void render(Graphics2D g) {	
-
+		g.setColor(Color.WHITE);
+		g.drawRect((int)center.x, (int)center.y, 10, 10);
 	}
 }

@@ -53,7 +53,7 @@ public class Line0 extends AssemblyLine{
 		ShippingTruck truck = new ShippingTruck(END);
 		Edge truckConveyor = new Conveyor(STORAGE_NODE_BOTTOM, END, truck);
 		
-		FillerMachine fillerNode = new FillerMachine(truckConveyor, 1, STORAGE_NODE_BOTTOM, new CerealBox().cerealFiller());
+		FillerMachine fillerNode = new FillerMachine(truckConveyor, 1, STORAGE_NODE_BOTTOM, CerealBox.cerealFiller());
 		//StorageNode storageNode = new StorageNode(fillerNode, STORAGE_NODE_TOP, new CerealBox());
 		//fillerNode.connectToStorageNode(storageNode);
 		
