@@ -15,6 +15,6 @@ public class Conveyor extends Edge {
 	public void render(Graphics2D g) {	
 		super.render(g);
 		g.setColor(Color.WHITE);
-		g.drawLine((int)start.x, (int)(start.y + Node.NODE_SIZE/2.0), (int)end.x, (int)(end.y + Node.NODE_SIZE/2.0));
+		g.drawLine((int)start.x - Node.HALF_NODE_SIZE, (int)(start.y + Node.HALF_NODE_SIZE), (int)end.x + Node.HALF_NODE_SIZE, (int)(end.y + Node.HALF_NODE_SIZE));
 	}
 }

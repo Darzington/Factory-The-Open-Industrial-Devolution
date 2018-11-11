@@ -57,6 +57,6 @@ public class CerealBox extends Item {
 	@Override
 	public void render(Graphics2D g) {
 		g.setColor(Color.ORANGE);
-		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.NODE_SIZE/2.0 - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
+		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
 	}
 }
