@@ -12,7 +12,7 @@ public class Edge implements IGameObject {
 	
 	private double length, speed;
 	private Point2D start, end;
-	private double deltaX, deltaY;
+	private Vector2D change;
 	private ArrayList<Item> currentItems;
 	private Node nextNode;	
 	
@@ -40,17 +40,17 @@ public class Edge implements IGameObject {
 	private void setSpeed(double newSpeed)
 	{
 		this.speed = newSpeed;
-		Vector2D deltaPos = new Vector2D(start, end);
-		deltaPos.scale(speed);
-		deltaX = deltaPos.x;
-		deltaY = deltaPos.y;
+		change = new Vector2D(start, end)
+					 .originVector()
+					 .scale(speed);
+
 	}
 	
 	@Override
 	public void update(double delta) {
 		for (Item item : currentItems) {
 			Point2D newPos = item.getPosition();
-			newPos.add(deltaX, deltaY);
+			newPos = Point2D.add(newPos, change);
 			newPos = ZMath.clamp(newPos, start, end);
 			item.move(newPos);
 			
