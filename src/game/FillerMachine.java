@@ -7,14 +7,13 @@ import com.zalinius.physics.Point2D;
 
 public class FillerMachine extends MachineBaseNode {
 	
-	public enum Filler { CEREAL, PRIZE }
 	
-	private Filler fillerType;
+	private FillerFunction fillerFunction;
 	private StorageNode storage;
 
-	public FillerMachine(Edge outgoingEdge, double holdTime, Point2D center, Filler fillerType) {
+	public FillerMachine(Edge outgoingEdge, double holdTime, Point2D center, FillerFunction fillerFunction) {
 		super(true, outgoingEdge, holdTime, center);
-		this.fillerType = fillerType;
+		this.fillerFunction = fillerFunction;
 		setConnectedMachine(this);	//Can turn itself off and on
 	}
 	
@@ -26,73 +25,20 @@ public class FillerMachine extends MachineBaseNode {
 	@Override
 	protected void outputItem(Item item)
 	{
-		if(isOn)
+		if(isOn && (storage == null || storage.isFull()))
 		{
-			CerealBox temp = new CerealBox();
-			boolean garbage = false;
-			switch(fillerType)
+			if (fillerFunction.fill(item))
 			{
-			case CEREAL:
-			{
-				if (temp.isSameItem(item))
-				{
-					temp = (CerealBox)item;
-					if (temp.addCereal())
-					{
-						super.outputItem(temp);
-					}
-					else
-					{
-						garbage = true;
-					}
-				}
-				else
-				{
-					garbage = true;
-				}
-				break;
+				super.outputItem(item);
 			}
-			
-			case PRIZE:
-			{
-				temp.addCereal();
-				if (temp.isSameItem((CerealBox)item))
-				{
-					temp = (CerealBox)item;
-					if(storage != null && storage.isFull())
-					{
-						if (temp.addPrize())
-						{
-							super.outputItem(temp);
-						}
-						else
-						{
-							garbage = true;
-						}
-					}
-					else
-					{
-						super.outputItem(item);
-					}
-				}
-				else
-				{
-					garbage = true;
-				}
-				break;
-			}	
-			
-			
-			}
-			
-			if(garbage)
+			else
 			{
 				super.outputItem(new Garbage(item.getHeight(), item.getColor()));
 			}
 		}
 		else
 		{
-			super.outputItem(item);	//we shouldn't be in this function if off, but just in case
+			super.outputItem(item);
 		}
 	}
 	

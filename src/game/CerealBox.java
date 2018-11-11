@@ -85,4 +85,45 @@ public class CerealBox extends Item {
 		return BOX_HEIGHT;
 	}
 	
+	public FillerFunction cerealFiller()
+	{
+		return new FillerFunction() {
+			
+			@Override
+			public boolean fill(Item item) {
+				CerealBox temp = new CerealBox();
+				if (temp.isSameItem(item))
+				{
+					temp = (CerealBox)item;
+					if (temp.addCereal())
+					{
+						return true;
+					}
+				}
+				return false;				
+			}
+		};
+	}
+	
+	public FillerFunction prizeFiller()
+	{
+		return new FillerFunction() {
+			
+			@Override
+			public boolean fill(Item item) {
+				CerealBox temp = new CerealBox();
+				temp.addCereal();
+				if (temp.isSameItem(item))
+				{
+					temp = (CerealBox)item;
+					if (temp.addPrize())
+					{
+						return true;
+					}
+				}
+				return false;				
+			}
+		};
+	}
+	
 }
