@@ -1,22 +1,21 @@
 package game;
 
-import java.awt.Rectangle;
 import java.awt.Shape;
 
 import com.zalinius.architecture.input.Clickable;
+import com.zalinius.physics.Point2D;
 
 public class MachineBaseNode extends Node {
 
 	Node connectedMachine;
 	boolean controlsPower;
 	
-	public MachineBaseNode(Node connectedMachine, boolean controlsPower, Edge outgoingEdge){
-		super(outgoingEdge);
+	public MachineBaseNode(Node connectedMachine, boolean controlsPower, Edge outgoingEdge, Point2D center){
+		super(outgoingEdge, center);
 		this.connectedMachine = connectedMachine;
 		this.controlsPower = controlsPower;
 	}
 	
-
 	public Clickable getControls()
 	{
 		return new Clickable() {
@@ -37,7 +36,7 @@ public class MachineBaseNode extends Node {
 			public void mouseClicked() {
 				if (connectedMachine != null && controlsPower)
 				{
-					connectedMachine.togglePoweredState();
+					connectedMachine.togglePoweredStatus();
 				}				
 			}
 			
@@ -49,7 +48,7 @@ public class MachineBaseNode extends Node {
 			
 			@Override
 			public Shape clickArea() {
-				return new Rectangle(0, 0, Node.NODE_SIZE, Node.NODE_SIZE);
+				return getClickArea();
 			}
 		};
 	}

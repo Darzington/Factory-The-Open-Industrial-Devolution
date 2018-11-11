@@ -1,9 +1,11 @@
 package game;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import com.zalinius.architecture.GameObject;
+import com.zalinius.physics.Point2D;
 import com.zalinius.utilities.Debug;
 
 public class Node implements GameObject {
@@ -12,21 +14,26 @@ public class Node implements GameObject {
 
 	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
+	protected boolean isOn;
+	protected Point2D center;
 	
 	public Node()	
 	{
 		this.outgoingEdges = new ArrayList<>();
+		isOn = true;
+		center = new Point2D(0,0);
 	}
 	
-	public Node(Edge outgoingEdge)	
+	public Node(Edge outgoingEdge, Point2D center)	
 	{
-		this.outgoingEdges = new ArrayList<>();
+		this();
+		this.center = center;
 		outgoingEdges.add(outgoingEdge);
 	}
 	
 	public boolean inputItem(Item item)
 	{
-		if (!isFull())
+		if (!isFull() && isOn)
 		{
 			currentItem = item;
 			return true;
@@ -63,6 +70,31 @@ public class Node implements GameObject {
 	public void addOutgoingEdge(Edge newEdge)
 	{
 		outgoingEdges.add(newEdge);
+	}
+	
+	public void togglePoweredStatus()
+	{
+		isOn = !isOn;
+	}
+	
+	public boolean isOn()
+	{
+		return isOn;
+	}
+	
+	public Point2D getCenter()
+	{
+		return center;
+	}
+	
+	public Rectangle getClickArea()
+	{
+		return new Rectangle((int)(center.x - NODE_SIZE/2.0) , (int)(center.y + NODE_SIZE/2.0), NODE_SIZE, NODE_SIZE);
+	}
+	
+	public void drawRectangle(Graphics2D g)
+	{
+		g.drawRect((int)(center.x - NODE_SIZE/2.0), (int)(center.y - NODE_SIZE/2.0), NODE_SIZE, NODE_SIZE);
 	}
 	
 	@Override

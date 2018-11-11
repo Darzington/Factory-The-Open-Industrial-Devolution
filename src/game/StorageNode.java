@@ -15,9 +15,9 @@ public class StorageNode extends Node {
 	Item storageItemType;
 	Queue<Item> storage;
 
-	public StorageNode(MachineBaseNode base)
+	public StorageNode(MachineBaseNode base, Point2D center)
 	{
-		super(new Edge(1, new Point2D(0,0), new Point2D(1,1), base));
+		super(new Edge(1, new Point2D(0,0), new Point2D(1,1), base), center);
 		storage = new ArrayDeque<>();
 	}
 	
@@ -74,7 +74,7 @@ public class StorageNode extends Node {
 			
 			@Override
 			public Shape clickArea() {
-				return new Rectangle(0, 0, Node.NODE_SIZE, Node.NODE_SIZE);
+				return getClickArea();
 			}
 		};
 	}
@@ -83,8 +83,7 @@ public class StorageNode extends Node {
 	public void render(Graphics2D g) {
 		super.render(g);
 		g.setColor(Color.RED);
-		g.drawRect(0, 0, Node.NODE_SIZE, Node.NODE_SIZE);
-		
+		drawRectangle(g);
 	}
 
 }
