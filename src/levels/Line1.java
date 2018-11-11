@@ -43,20 +43,20 @@ public class Line1 extends AssemblyLine {
 		Edge truckConveyor = new Conveyor(CEREAL_FILLER_BOT, END, truck);
 		FillerMachine cerealFiller = new FillerMachine(truckConveyor, 1, CEREAL_FILLER_BOT, CerealBox.cerealFiller());
 		Edge c1 = new Conveyor(PRIZE_FILLER_BOT, CEREAL_FILLER_BOT, cerealFiller);
-		FillerMachine prizeFiller = new FillerMachine(c1, 1, PRIZE_FILLER_BOT, CerealBox.prizeFiller());
+		FillerMachine prizeFiller = new FillerMachine(c1, 2, PRIZE_FILLER_BOT, CerealBox.prizeFiller());
 		Edge c2 = new Conveyor(BOX_DROPPER_BOT, PRIZE_FILLER_BOT, prizeFiller);
 		
 		
 		MachineBaseNode boxBase = new MachineBaseNode(false, c2, 0, BOX_DROPPER_BOT);
-		Node boxStorage = new StorageNode(boxBase, BOX_DROPPER_TOP, new CerealBox());
+		Node boxStorage = new StorageNode(boxBase, new Edge(BOX_DROPPER_TOP, BOX_DROPPER_BOT, boxBase), BOX_DROPPER_TOP, new CerealBox());
 		Edge c3 = new Conveyor(BOX_DROPPER_HOPPER, BOX_DROPPER_TOP, boxStorage);
 		Node upRightCorner = new Node(c3, BOX_DROPPER_HOPPER);
 		upRightCorner.togglePoweredStatus();
 		
 		Edge c4 = new Conveyor(PRIZE_FILLER_HOPPER, BOX_DROPPER_HOPPER, upRightCorner);
 		
-		StorageNode prizeStorage = new StorageNode(prizeFiller, PRIZE_FILLER_TOP, new Prize());
-		//prizeFiller.connectToStorageNode(prizeStorage);
+		StorageNode prizeStorage = new StorageNode(prizeFiller, new DirectMachineConnectorEdge(PRIZE_FILLER_TOP, PRIZE_FILLER_BOT, prizeFiller), PRIZE_FILLER_TOP, new Prize());
+		prizeFiller.connectToStorageNode(prizeStorage);
 
 		Edge c5 = new Conveyor(PRIZE_FILLER_HOPPER, PRIZE_FILLER_TOP, prizeStorage);
 

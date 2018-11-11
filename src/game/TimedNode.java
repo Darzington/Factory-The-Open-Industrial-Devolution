@@ -20,7 +20,7 @@ public abstract class TimedNode extends Node {
 	@Override
 	public boolean inputItem(Item item)
 	{
-		if (isOn && super.inputItem(item))
+		if (super.inputItem(item))
 		{
 			GameClock.addTimer(this, holdTime);
 			return true;

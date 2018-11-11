@@ -35,7 +35,6 @@ public class MachineBaseNode extends TimedNode {
 		}
 		else
 		{
-			super.outputItem(item);
 			return false;
 		}
 	}

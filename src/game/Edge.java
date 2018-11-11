@@ -18,8 +18,8 @@ public class Edge implements GameObject {
 	public static double edgeSpeed;
 	protected Point2D start, end;
 	private Vector2D change;
-	private ArrayList<Item> currentItems;
-	private Node nextNode;	
+	protected ArrayList<Item> currentItems;
+	protected Node nextNode;	
 	
 	public Edge(Point2D start, Point2D end,  Node nextNode) {
 		this.start = start;
@@ -35,7 +35,7 @@ public class Edge implements GameObject {
 		currentItems.add(item);
 	}
 	
-	private void outputItem(Item item)
+	protected void outputItem(Item item)
 	{
 		currentItems.remove(item);
 		nextNode.inputItem(item);

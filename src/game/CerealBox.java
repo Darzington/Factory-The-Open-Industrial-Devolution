@@ -92,6 +92,7 @@ public class CerealBox extends Item {
 			@Override
 			public boolean fill(Item item) {
 				CerealBox temp = new CerealBox();
+				temp.addPrize();
 				if (temp.isSameItem(item))
 				{
 					temp = (CerealBox)item;
@@ -112,7 +113,6 @@ public class CerealBox extends Item {
 			@Override
 			public boolean fill(Item item) {
 				CerealBox temp = new CerealBox();
-				temp.addCereal();
 				if (temp.isSameItem(item))
 				{
 					temp = (CerealBox)item;
