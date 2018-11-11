@@ -1,21 +1,42 @@
 package game;
 
 import java.awt.Shape;
+import java.awt.event.MouseEvent;
 
+import com.zalinius.architecture.GameStage;
 import com.zalinius.architecture.input.Clickable;
 import com.zalinius.physics.Point2D;
+import com.zalinius.utilities.time.GameClock;
 
-public class MachineBaseNode extends Node {
+public class MachineBaseNode extends TimedNode {
 
 	Node connectedMachine;
 	boolean controlsPower;
 	
-	public MachineBaseNode(boolean controlsPower, Edge outgoingEdge, Point2D center){
-		super(outgoingEdge, center);
+	public MachineBaseNode(boolean controlsPower, Edge outgoingEdge, double holdTime, Point2D center){
+		super(outgoingEdge, holdTime, center);
 		this.controlsPower = controlsPower;
 		if (!controlsPower)
 		{
 			isOn = false;	//so items will pass through
+		}
+		else
+		{
+			GameStage.addInput(getControls());
+		}
+	}
+	
+	@Override
+	public boolean inputItem(Item item)
+	{
+		if (super.inputItem(item))
+		{
+			return true;
+		}
+		else
+		{
+			super.outputItem(item);
+			return false;
 		}
 	}
 	
@@ -51,8 +72,7 @@ public class MachineBaseNode extends Node {
 			
 			@Override
 			public int mouseButtonCode() {
-				// TODO Auto-generated method stub
-				return 0;
+				return MouseEvent.BUTTON1;
 			}
 			
 			@Override

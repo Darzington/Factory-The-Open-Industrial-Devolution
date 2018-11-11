@@ -48,11 +48,15 @@ public class CerealBox extends Item {
 		}
 	}
 	
-	public boolean isSameItem(CerealBox box2)
+	public boolean isSameItem(Item box2)
 	{
-		return super.isSameItem(box2) 
-				&& hasCereal == box2.hasCereal 
-				&& hasPrize == box2.hasPrize;
+		if(super.isSameItem(box2))
+		{
+			CerealBox other = (CerealBox) box2;
+			return hasCereal == other.hasCereal() 
+				&& hasPrize == other.hasPrize();
+		}	
+		return false;
 	}
 
 	@Override
@@ -79,6 +83,47 @@ public class CerealBox extends Item {
 	@Override
 	public int getHeight() {
 		return BOX_HEIGHT;
+	}
+	
+	public FillerFunction cerealFiller()
+	{
+		return new FillerFunction() {
+			
+			@Override
+			public boolean fill(Item item) {
+				CerealBox temp = new CerealBox();
+				if (temp.isSameItem(item))
+				{
+					temp = (CerealBox)item;
+					if (temp.addCereal())
+					{
+						return true;
+					}
+				}
+				return false;				
+			}
+		};
+	}
+	
+	public FillerFunction prizeFiller()
+	{
+		return new FillerFunction() {
+			
+			@Override
+			public boolean fill(Item item) {
+				CerealBox temp = new CerealBox();
+				temp.addCereal();
+				if (temp.isSameItem(item))
+				{
+					temp = (CerealBox)item;
+					if (temp.addPrize())
+					{
+						return true;
+					}
+				}
+				return false;				
+			}
+		};
 	}
 	
 }
