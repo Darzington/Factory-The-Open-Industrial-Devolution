@@ -17,7 +17,7 @@ public class StorageNode extends Node {
 
 	public StorageNode(MachineBaseNode base, Point2D center)
 	{
-		super(new Edge(1, new Point2D(0,0), new Point2D(1,1), base), center);
+		super(new Edge(center, base.getCenter(), base), center);
 		storage = new ArrayDeque<>();
 	}
 	
