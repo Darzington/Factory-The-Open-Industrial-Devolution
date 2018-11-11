@@ -7,14 +7,7 @@ import com.zalinius.physics.Point2D;
 public class Conveyor extends Edge {
 
 	public Conveyor(Point2D start, Point2D end) {
-		super(1, start, end, new Node() {
-			
-			@Override
-			protected Edge selectOutgoingEdge() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		});
+		super(50, start, end, new ShippingTruck());
 	}
 
 	

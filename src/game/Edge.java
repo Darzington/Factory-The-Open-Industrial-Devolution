@@ -45,12 +45,10 @@ public class Edge implements GameObject {
 		change = new Vector2D(start, end)
 					 .originVector();
 		change = change.scale(speed/change.length());
-		Debug.log("Speed is:" + change);
 	}
 	
 	@Override
 	public void update(double delta) {
-		Debug.log("time: " + GameClock.timeNow());
 		ArrayList<Item> removeMe = new ArrayList<>();
 		
 		Iterator<Item> it = currentItems.iterator();
@@ -59,7 +57,6 @@ public class Edge implements GameObject {
 			
 			Point2D newPos = item.getPosition();
 			newPos = Point2D.add(newPos, change.scale(delta));
-			Debug.log(change.scale(delta).toString());
 
 			newPos = ZMath.clamp(newPos, start, end);
 			item.move(newPos);
