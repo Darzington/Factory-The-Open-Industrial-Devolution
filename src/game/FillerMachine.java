@@ -10,6 +10,7 @@ public class FillerMachine extends MachineBaseNode {
 	
 	private FillerFunction fillerFunction;
 	private StorageNode storage;
+	private Item droppedItem;
 
 	public FillerMachine(Edge outgoingEdge, double holdTime, Point2D center, FillerFunction fillerFunction) {
 		super(true, outgoingEdge, holdTime, center);
@@ -23,8 +24,21 @@ public class FillerMachine extends MachineBaseNode {
 	}
 	
 	@Override
+	public boolean inputItem(Item item)
+	{
+		if(isOn && storage != null && storage.isFull())
+		{
+			droppedItem = storage.storage.peek();
+			storage.outputItem();
+		}
+		return true;
+	}
+	
+	@Override
 	protected void outputItem(Item item)
 	{
+		droppedItem = null;
+
 		if(isOn && (storage == null || storage.isFull()))
 		{
 			if (fillerFunction.fill(item))
@@ -39,7 +53,7 @@ public class FillerMachine extends MachineBaseNode {
 		else
 		{
 			super.outputItem(item);
-		}
+		}		
 	}
 	
 	@Override

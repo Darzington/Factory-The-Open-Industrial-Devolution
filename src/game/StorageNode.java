@@ -42,6 +42,12 @@ public class StorageNode extends Node {
 	}
 	
 	@Override
+	public void outputItem()
+	{
+		super.outputItem(storage.remove());
+	}
+	
+	@Override
 	public boolean isFull() {
 		return !storage.isEmpty();
 	}
