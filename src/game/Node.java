@@ -3,9 +3,10 @@ package game;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
+import com.zalinius.utilities.Debug;
 
-public abstract class Node implements IGameObject {
+public abstract class Node implements GameObject {
 	
 	protected Item currentItem;
 	protected ArrayList<Edge> outgoingEdges;
@@ -29,11 +30,16 @@ public abstract class Node implements IGameObject {
 		}
 	}
 	
+	protected void outputItem()
+	{
+		outputItem(currentItem);
+		currentItem = null;	
+	}
+	
 	protected void outputItem(Item item)
 	{
 		Edge correctEdge = selectOutgoingEdge();
 		correctEdge.inputItem(item);
-		currentItem = null;	
 	}
 	
 	public boolean isFull() {
@@ -52,11 +58,15 @@ public abstract class Node implements IGameObject {
 	
 	@Override
 	public void update(double delta) {
-
+		for (Edge edge : outgoingEdges) {
+			edge.update(delta);
+		}
 	}
-
+	
 	@Override
 	public void render(Graphics2D g) {	
-		
+		for (Edge e : outgoingEdges) {
+			e.render(g);
+		}
 	}
 }

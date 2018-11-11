@@ -2,9 +2,9 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import com.zalinius.architecture.IGameObject;
+import com.zalinius.architecture.GameObject;
 
-public class Test implements IGameObject {
+public class Test implements GameObject {
 	
 	double x, y;
 	

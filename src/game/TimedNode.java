@@ -1,12 +1,9 @@
 package game;
 
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-
-import com.zalinius.architecture.IGameObject;
 import com.zalinius.utilities.time.GameClock;
 
-public abstract class TimedNode extends Node implements IGameObject {
+public abstract class TimedNode extends Node {
 	
 	private double holdTime;
 	
@@ -32,7 +29,8 @@ public abstract class TimedNode extends Node implements IGameObject {
 			
 	@Override
 	public void update(double delta) {
-		if (GameClock.isTimerDone(this))
+		super.update(delta);
+		if (isFull() && GameClock.isTimerDone(this))
 		{
 			outputItem(currentItem);
 		}
@@ -40,6 +38,6 @@ public abstract class TimedNode extends Node implements IGameObject {
 
 	@Override
 	public void render(Graphics2D g) {	
-		
+		super.render(g);
 	}
 }
