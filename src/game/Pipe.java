@@ -19,7 +19,7 @@ public class Pipe extends Edge {
 		super.render(g);
 		
 		for (Item item : getContents()) {
-			if(item.getPosition().y > start.y + INNER_PIPE_WIDTH*2 && item.getPosition().y < end.y - INNER_PIPE_WIDTH * 2) {
+			if(item.getPosition().y > start.y + INNER_PIPE_WIDTH*2 && item.getPosition().y < end.y - INNER_PIPE_WIDTH * 2 + 4) {
 				drawBulge(g, item.getPosition(), item.getWidth(), item.getHeight());
 			}
 		}
