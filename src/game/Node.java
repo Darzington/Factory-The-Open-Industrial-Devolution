@@ -46,7 +46,10 @@ public abstract class Node implements GameObject {
 		return currentItem != null;
 	}
 	
-	protected abstract Edge selectOutgoingEdge();
+	protected Edge selectOutgoingEdge() {
+		return outgoingEdges.get(0);
+	}
+
 	
 	public void addOutgoingEdge(Edge newEdge)
 	{
