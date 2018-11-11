@@ -10,10 +10,19 @@ public class MachineBaseNode extends Node {
 	Node connectedMachine;
 	boolean controlsPower;
 	
-	public MachineBaseNode(Node connectedMachine, boolean controlsPower, Edge outgoingEdge, Point2D center){
+	public MachineBaseNode(boolean controlsPower, Edge outgoingEdge, Point2D center){
 		super(outgoingEdge, center);
-		this.connectedMachine = connectedMachine;
 		this.controlsPower = controlsPower;
+		if (!controlsPower)
+		{
+			isOn = false;	//so items will pass through
+		}
+	}
+	
+	public void setConnectedMachine(Node connectedMachine)
+	{
+		this.connectedMachine = connectedMachine;
+
 	}
 	
 	public Clickable getControls()

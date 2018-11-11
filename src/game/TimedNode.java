@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Graphics2D;
 
+import com.zalinius.physics.Point2D;
 import com.zalinius.utilities.Debug;
 import com.zalinius.utilities.time.GameClock;
 
@@ -9,9 +10,10 @@ public abstract class TimedNode extends Node {
 	
 	private double holdTime;
 	
-	public TimedNode(double holdTime)	
+	public TimedNode(Edge outgoingEdge, double holdTime, Point2D center)	
 	{
-		super();
+		super(outgoingEdge, center);
+		this.center = center;
 		this.holdTime = holdTime;
 	}
 	

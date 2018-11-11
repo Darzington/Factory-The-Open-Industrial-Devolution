@@ -97,7 +97,7 @@ public class Node implements GameObject {
 	
 	public void drawRectangle(Graphics2D g)
 	{
-		g.draw(getClickArea());
+		g.fill(getClickArea());
 	}
 	
 	@Override
