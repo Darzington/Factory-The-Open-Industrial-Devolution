@@ -14,7 +14,6 @@ public abstract class Level implements GameObject{
 		this.line = line;
 	}
 	
-	
 	public void update(double delta) {
 		line.update(delta);
 	}
