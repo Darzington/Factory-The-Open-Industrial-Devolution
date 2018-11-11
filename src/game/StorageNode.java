@@ -10,6 +10,7 @@ import java.util.Queue;
 import com.zalinius.architecture.GameStage;
 import com.zalinius.architecture.input.Clickable;
 import com.zalinius.physics.Point2D;
+import com.zalinius.utilities.ZMath;
 
 public class StorageNode extends Node {
 	
@@ -86,6 +87,21 @@ public class StorageNode extends Node {
 		super.render(g);
 		g.setColor(Color.RED);
 		drawRectangle(g);
+		drawFillLevel(g);
 	}
 
+	public void drawFillLevel(Graphics2D g) {
+		//outer contour
+		g.setColor(Color.WHITE);
+		g.fillRect((int)center.x - 17, (int)center.y - 7, 34, 14);
+		
+		//Inner background
+		g.setColor(Color.BLACK);
+		g.fillRect((int)center.x - 15, (int)center.y - 5, 30, 10);
+		
+		//Fill Level
+		int fill = ZMath.clamp(storage.size(), 0, 5);
+		g.setColor(Color.GREEN);
+		g.fillRect((int)center.x - 15, (int)center.y - 5, 6 * fill , 10);
+	}
 }

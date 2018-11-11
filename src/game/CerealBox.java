@@ -9,6 +9,7 @@ public class CerealBox extends Item {
 
 	private boolean hasCereal, hasPrize;
 	final static int BOX_HEIGHT = 18;
+	final static int BOX_WIDTH = 10;
 
 	public boolean hasCereal() {
 		return hasCereal;
@@ -57,7 +58,7 @@ public class CerealBox extends Item {
 	@Override
 	public void render(Graphics2D g) {
 		g.setColor(Color.ORANGE);
-		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
+		g.fillRect((int)getPosition().x-BOX_WIDTH/2, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
 	}
 
 	@Override
