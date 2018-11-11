@@ -10,7 +10,7 @@ import com.zalinius.utilities.ZMath;
 
 public class Edge implements IGameObject {
 	
-	private double length, speed;
+	private double speed;
 	private Point2D start, end;
 	private Vector2D change;
 	private ArrayList<Item> currentItems;
@@ -23,7 +23,6 @@ public class Edge implements IGameObject {
 		this.nextNode = nextNode;
 		
 		setSpeed(speed);
-		this.length = Point2D.distance(start, end);	
 	}
 
 	public void inputItem(Item item)
