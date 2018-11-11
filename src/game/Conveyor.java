@@ -29,6 +29,5 @@ public class Conveyor extends Edge {
 			}
 			g.drawLine(i, (int)(start.y + Node.HALF_NODE_SIZE), i+inc, (int)(start.y + Node.HALF_NODE_SIZE));
 		}
-		//g.drawLine((int)start.x - Node.HALF_NODE_SIZE, (int)(start.y + Node.HALF_NODE_SIZE), (int)end.x + Node.HALF_NODE_SIZE, (int)(end.y + Node.HALF_NODE_SIZE));
 	}
 }

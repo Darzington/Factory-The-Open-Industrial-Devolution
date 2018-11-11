@@ -42,8 +42,8 @@ public abstract class AssemblyLine implements GameObject {
 	
 	@Override
 	public void render(Graphics2D g) {
-		nodes.forEach(node -> node.render(g));
 		edges.forEach(edge -> edge.render(g));
+		nodes.forEach(node -> node.render(g));
 	}
 
 }

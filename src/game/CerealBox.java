@@ -125,5 +125,10 @@ public class CerealBox extends Item {
 			}
 		};
 	}
+
+	@Override
+	public int getWidth() {
+		return BOX_WIDTH;
+	}
 	
 }
