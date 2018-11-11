@@ -38,6 +38,12 @@ public class Line0 extends AssemblyLine{
 					g.setColor(Color.BLUE);
 					g.drawRect((int)getPosition().x, (int)getPosition().y - 12, 10, 10);
 				}
+
+				@Override
+				public boolean isComplete() {
+					// TODO Auto-generated method stub
+					return false;
+				}
 			});
 		}
 		
