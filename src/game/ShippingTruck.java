@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 public class ShippingTruck extends Node {
@@ -25,6 +27,13 @@ public class ShippingTruck extends Node {
 	@Override
 	protected Edge selectOutgoingEdge() {
 		return null;
+	}
+	
+	@Override
+	public void render(Graphics2D g) {
+		super.render(g);
+		g.setColor(Color.CYAN);
+		g.drawRect(20, 500, 50, 50);
 	}
 
 }

@@ -1,24 +1,24 @@
 package game;
 
-import java.awt.Event;
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import com.zalinius.architecture.input.Inputtable;
+import com.zalinius.architecture.input.Clickable;
+import com.zalinius.physics.Point2D;
 
 public class StorageNode extends Node {
 	
-	Edge outputEdge;
 	Item storageItemType;
 	Queue<Item> storage;
 
-	public StorageNode(Edge outputEdge)
+	public StorageNode(MachineBaseNode base, Point2D center)
 	{
-		super();
-		this.outputEdge = outputEdge;
+		super(new Edge(center, base.getCenter(), base), center);
 		storage = new ArrayDeque<>();
-		
 	}
 	
 	@Override
@@ -36,45 +36,54 @@ public class StorageNode extends Node {
 			return false;
 		}
 	}
-
-	@Override
-	protected Edge selectOutgoingEdge() {
-		return outputEdge;
-	}
 	
 	@Override
 	public boolean isFull() {
 		return !storage.isEmpty();
 	}
 
-	public Inputtable getControls()
+	public Clickable getControls()
 	{
-		return new Inputtable() {
+		return new Clickable() {
 			
 			@Override
-			public void released() {
-				if (isFull())
-				{
-					outputItem(storage.remove());
-				}
-			}
-			
-			@Override
-			public void pressed() {
+			public void mouseReleased() {
+				// TODO Auto-generated method stub
 				
 			}
 			
 			@Override
-			public int keyCode() {
-				return Event.MOUSE_DOWN;
+			public void mousePressed() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked() {
+				if (isFull())
+				{
+					outputItem(storage.remove());
+				}				
+			}
+			
+			@Override
+			public int mouseButtonCode() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			
+			@Override
+			public Shape clickArea() {
+				return getClickArea();
 			}
 		};
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		// TODO Auto-generated method stub
-		
+		super.render(g);
+		g.setColor(Color.RED);
+		drawRectangle(g);
 	}
 
 }

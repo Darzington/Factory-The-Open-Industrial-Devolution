@@ -13,19 +13,21 @@ import com.zalinius.utilities.time.GameClock;
 
 public class Edge implements GameObject {
 	
-	private double speed;
+	public static final double NORMAL_EDGE_SPEED = 50;
+	
+	public static double edgeSpeed;
 	protected Point2D start, end;
 	private Vector2D change;
 	private ArrayList<Item> currentItems;
 	private Node nextNode;	
 	
-	public Edge(double speed, Point2D start, Point2D end,  Node nextNode) {
+	public Edge(Point2D start, Point2D end,  Node nextNode) {
 		this.start = start;
 		this.end = end;
 		this.currentItems = new ArrayList<>();
 		this.nextNode = nextNode;
 		
-		setSpeed(speed);
+		setSpeed(NORMAL_EDGE_SPEED);
 	}
 
 	public void inputItem(Item item)
@@ -41,10 +43,10 @@ public class Edge implements GameObject {
 	
 	private void setSpeed(double newSpeed)
 	{
-		this.speed = newSpeed;
+		this.edgeSpeed = newSpeed;
 		change = new Vector2D(start, end)
 					 .originVector();
-		change = change.scale(speed/change.length());
+		change = change.scale(edgeSpeed/change.length());
 	}
 	
 	@Override
