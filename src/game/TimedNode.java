@@ -29,7 +29,8 @@ public abstract class TimedNode extends Node {
 			
 	@Override
 	public void update(double delta) {
-		if (GameClock.isTimerDone(this))
+		super.update(delta);
+		if (isFull() && GameClock.isTimerDone(this))
 		{
 			outputItem(currentItem);
 		}
@@ -37,6 +38,6 @@ public abstract class TimedNode extends Node {
 
 	@Override
 	public void render(Graphics2D g) {	
-		
+		super.render(g);
 	}
 }

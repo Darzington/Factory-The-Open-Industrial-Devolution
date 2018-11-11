@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
@@ -11,7 +12,7 @@ import com.zalinius.utilities.ZMath;
 public class Edge implements GameObject {
 	
 	private double speed;
-	private Point2D start, end;
+	protected Point2D start, end;
 	private Vector2D change;
 	private ArrayList<Item> currentItems;
 	private Node nextNode;	
@@ -40,28 +41,41 @@ public class Edge implements GameObject {
 	{
 		this.speed = newSpeed;
 		change = new Vector2D(start, end)
-					 .originVector()
-					 .scale(speed);
-
+					 .originVector();
+		change = change.scale(speed/change.length());
 	}
 	
 	@Override
 	public void update(double delta) {
-		for (Item item : currentItems) {
+		ArrayList<Item> removeMe = new ArrayList<>();
+		
+		Iterator<Item> it = currentItems.iterator();
+		while(it.hasNext()) {
+			Item item = it.next();
+			
 			Point2D newPos = item.getPosition();
 			newPos = Point2D.add(newPos, change);
+
 			newPos = ZMath.clamp(newPos, start, end);
 			item.move(newPos);
 			
 			if(newPos.equals(end))
 			{
-				outputItem(item);
+				removeMe.add(item);
 			}
+		}
+		
+		it = removeMe.iterator();
+		while(it.hasNext()) {
+			Item item = it.next();
+			outputItem(item);
 		}
 	}
 
 	@Override
-	public void render(Graphics2D g) {	
-		
+	public void render(Graphics2D g) {
+		for (Item item : currentItems) {
+			item.render(g);
+		}
 	}
 }

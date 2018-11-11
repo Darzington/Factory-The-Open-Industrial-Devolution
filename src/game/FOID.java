@@ -6,12 +6,16 @@ import com.zalinius.architecture.GameContainer;
 import com.zalinius.architecture.Graphical;
 import com.zalinius.architecture.Logical;
 
+import levels.Level;
+import levels.Level0;
+
 public class FOID implements Graphical, Logical{
 	
 	private Test t1;
+	private Level level0;
 
 	public FOID() {
-		// TODO Auto-generated constructor stub
+		level0 = new Level0();
 	}
 
 	public static void main(String[] args) {
@@ -26,11 +30,13 @@ public class FOID implements Graphical, Logical{
 	@Override
 	public void update(double delta) {
 		t1.update(delta);
+		level0.update(delta);
 	}
 
 	@Override
 	public void render(Graphics2D g) {	
 		t1.render(g);
+		level0.render(g);
 	}
 
 }

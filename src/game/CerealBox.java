@@ -2,9 +2,15 @@ package game;
 
 import java.awt.Graphics2D;
 
+import com.zalinius.physics.Point2D;
+
 public class CerealBox extends Item {
 
 	private boolean hasCereal, hasPrize;
+	
+	public CerealBox(Point2D position) {
+		super(position);
+	}
 
 	public boolean hasCereal() {
 		return hasCereal;
