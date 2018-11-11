@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import com.zalinius.physics.Point2D;
+
 public class ShippingTruck extends Node {
 
 	private ArrayList<Item> packedItems;
 	
-	public ShippingTruck() {
+	public ShippingTruck(Point2D center) {
+		super(null, center);
 		packedItems = new ArrayList<>();
 	}
 	
@@ -31,9 +34,8 @@ public class ShippingTruck extends Node {
 	
 	@Override
 	public void render(Graphics2D g) {
-		super.render(g);
 		g.setColor(Color.CYAN);
-		g.drawRect(20, 500, 50, 50);
+		g.draw(getClickArea());
 	}
 
 }

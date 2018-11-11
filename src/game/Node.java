@@ -28,7 +28,10 @@ public class Node implements GameObject {
 	{
 		this();
 		this.center = center;
-		outgoingEdges.add(outgoingEdge);
+		
+		if(outgoingEdge != null) {
+			outgoingEdges.add(outgoingEdge);
+		}
 	}
 	
 	public boolean inputItem(Item item)
@@ -89,7 +92,7 @@ public class Node implements GameObject {
 	
 	public Rectangle getClickArea()
 	{
-		return new Rectangle((int)(center.x - NODE_SIZE/2.0) , (int)(center.y + NODE_SIZE/2.0), NODE_SIZE, NODE_SIZE);
+		return new Rectangle((int)(center.x - NODE_SIZE/2.0) , (int)(center.y - NODE_SIZE/2.0), NODE_SIZE, NODE_SIZE);
 	}
 	
 	public void drawRectangle(Graphics2D g)
