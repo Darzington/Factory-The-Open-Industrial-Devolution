@@ -42,7 +42,7 @@ public class Edge implements GameObject {
 		this.speed = newSpeed;
 		change = new Vector2D(start, end)
 					 .originVector()
-					 .scale(speed);
+					 .scale(speed/change.length());
 	}
 	
 	@Override

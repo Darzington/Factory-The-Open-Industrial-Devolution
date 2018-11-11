@@ -2,7 +2,6 @@ package game;
 
 import com.zalinius.architecture.GameObject;
 import com.zalinius.physics.Point2D;
-import com.zalinius.utilities.Debug;
 
 public abstract class Item implements GameObject {
 

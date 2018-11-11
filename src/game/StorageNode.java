@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Event;
+import java.awt.Graphics2D;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -68,6 +69,12 @@ public class StorageNode extends Node {
 				return Event.MOUSE_DOWN;
 			}
 		};
+	}
+
+	@Override
+	public void render(Graphics2D g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

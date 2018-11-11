@@ -7,7 +7,7 @@ import com.zalinius.physics.Point2D;
 public class Conveyor extends Edge {
 
 	public Conveyor(Point2D start, Point2D end) {
-		super(50, start, end, null);
+		super(1, start, end, null);
 	}
 
 	
