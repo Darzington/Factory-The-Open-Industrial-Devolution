@@ -59,4 +59,10 @@ public class CerealBox extends Item {
 		g.setColor(Color.ORANGE);
 		g.fillRect((int)getPosition().x, (int)(getPosition().y + Node.HALF_NODE_SIZE - BOX_HEIGHT - 1), 10, BOX_HEIGHT);
 	}
+
+	@Override
+	public boolean isComplete() {
+		return hasCereal && hasPrize;
+	}
+	
 }

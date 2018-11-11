@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import com.zalinius.physics.Point2D;
+import com.zalinius.utilities.Debug;
 
 public class ShippingTruck extends Node {
 
@@ -25,6 +26,16 @@ public class ShippingTruck extends Node {
 	public ArrayList<Item> getPackedItem()
 	{
 		return packedItems;
+	}
+	
+	public void validateContents() {
+		int total = packedItems.size();
+		int valid = (int) packedItems.stream().filter(item -> item.isComplete()).count();
+		int invalid = total - valid;
+		
+		Debug.log("There are " + valid + " valid items.");
+		Debug.log("There are " + invalid + " invalid items.");
+		Debug.log("For a grand total of " + total + " items.");
 	}
 	
 	@Override
